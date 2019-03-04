@@ -1,0 +1,16 @@
+# Rules for kgmyshin
+meta:
+  reviewer:
+    - kgmyshin
+  related: https://kgmyshin.com/
+  rules:   https://github.com/prh/rules
+
+version: 1
+imports:
+  - ../prh-rules/prh.yml
+
+rules:
+  - expected: Annict
+    pattern: annict
+  - expected: Annict
+    pattern: アニクト

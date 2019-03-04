@@ -1,0 +1,13 @@
+# Rules for ride-on-jetpack
+meta:
+  reviewer:
+    - kgmyshin
+  related: https://www.android.com/
+  rules:   https://github.com/prh/rules
+
+version: 1
+rules:
+  - expected: TODOリスト
+    pattern: Todoリスト
+  - expected: TODOリスト
+    pattern: Todo List

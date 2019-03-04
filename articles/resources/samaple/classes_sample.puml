@@ -1,0 +1,29 @@
+@startuml
+title UI
+
+interface Contract
+
+interface Contract.Presenter {
+  setUp(view: View, screenTransition: ScreenTransition)
+  onAttach()
+  onDetach()
+  onCreateView()
+  onClickXXX()
+}
+
+interface Contract.View {
+  setUp(bindingModel: BindingModel)
+}
+
+interface ScreenTransition {
+  moveToNext()
+}
+
+Contract +-- Contract.Presenter
+Contract +-- Contract.View
+
+WorkPresenter .|> Contract.Presenter
+WorkFragment .|> Contract.View
+WorkActivity .|> ScreenTransition
+
+@enduml

@@ -1,0 +1,29 @@
+# Rules for Android
+meta:
+  reviewer:
+    - kgmyshin
+  related: https://www.android.com/
+  rules:   https://github.com/prh/rules
+
+version: 1
+rules:
+  - expected: レイヤー化アーキテクチャ
+    pattern: レイヤードアーキテクチャ
+    prh: 英語だと Multitier architectureになり、和名は多層アーキテクチャ。正式名称として際どいのでレイヤー化アーキテクチャで統一する
+  - expected: infra
+    pattern: /(Infrastructure|インフラ)/
+  - expected: domain
+    pattern: /Domain(?!Service)/
+  - expected: domain
+    pattern: /(事業)?ドメイン(?!ロジック|モデル貧血症|駆動設計)/
+    regexpMustEmpty: $1
+  - expected: ui
+    pattern: /(UI)/
+  - expected: usecase
+    pattern: /(UseCase|ユースケース)/
+  - expected: レイヤー
+    pattern: /(階)?層/
+    regexpMustEmpty: $1
+  - expected: ui
+    pattern: /(プレゼンテーション|Presentation|presentation)
+    prh: 本当は(hostServiceを考慮して) presentation と書きたいけど、一旦uiで

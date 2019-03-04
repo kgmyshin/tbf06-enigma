@@ -1,0 +1,22 @@
+# Rules for Android
+meta:
+  reviewer:
+    - kgmyshin
+  related: https://www.android.com/
+  rules:   https://github.com/prh/rules
+
+version: 1
+rules:
+  - expected: android
+    pattern: andoroid
+  - expected: android
+    pattern: andoid
+  - expected: API Level
+    pattern:  API level
+    prh: APIドキュメントでも揺れてますが、Levelで統一してます
+  - expected: View
+    pattern:  Vew
+  - expected: aidl
+    pattern:  /adil/
+  - expected: AIDL
+    pattern:  /ADIL/
