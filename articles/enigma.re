@@ -52,4 +52,4 @@ class Enigma(
   println(cipher2) // => AAAAAA 
 //}
 
-無事、複合化されることがわかりました。
+無事、複合化されました！
