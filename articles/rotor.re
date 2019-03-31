@@ -10,11 +10,13 @@
 
 //image[enigma_rotor_window][ローター]{
 //}
+#@# パブリックドメイン https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Enigma-rotor-windows.jpg
 
 ローターだけを取り出すと実際にはこのような形をしております。これは3つのローターを連結したときの様子です。
 
 //image[enigma_rotor_set][ローターの外観]{
 //}
+#@# cc0 https://tr.wikipedia.org/wiki/Dosya:Enigma_rotors_with_alphabet_rings.jpg
 
 ローターは次の機能を持っています。
 
