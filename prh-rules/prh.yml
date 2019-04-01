@@ -26,7 +26,7 @@ rules:
     pattern:  言わ
     prh: 呼ぶ、で代替するか漢字で書かず、ひらがなで書くと読みやすくなります。
   - expected: のよう
-    pattern:  の様
+    pattern:  の様(?!子)/
     prh: 漢字で書かず、ひらがなで書くと読みやすくなります。
   - expected: まったく
     pattern:  全く

@@ -64,7 +64,7 @@ class WiringTable(
   }
 //}
 
-=== プラグボード
+==={plugboard-model} プラグボード
 
 まずは、@<code>{WiringTable}をコンストラクタで受け取ります。
 
@@ -76,7 +76,7 @@ class Plugboard(
 
 プラグボードは、後ろにローターが接続されます。
 
-//list[constructor][コンストラクタ]{
+//list[connect_rotor][ローターと接続する]{
 class Plugboard(
   private val wiringTable: WiringTable
 ) {

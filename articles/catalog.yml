@@ -2,7 +2,11 @@ PREDEF:
   - foreword.re
 
 CHAPS:
-  - about_todo_application.re
+  - about_enigma.re
+  - rotor.re
+  - reflector.re
+  - plugboard.re
+  - enigma.re
 
 APPENDIX:
 
