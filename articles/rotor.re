@@ -3,20 +3,20 @@
 本章では、エニグマの心臓と言っても過言ではないローターという装置についての理解を深めていきます。
 そして、理解を深めた後は、ローターの仕様をプログラムのコードに落としていきます。
 
-#@# 全体像の画像
+#@# TODO: 全体像の画像
 
 == ローターとは
 
 繰り返しになりますが、ローターはエニグマの換字機能の心臓となる装置です。
 次の写真のダイヤル部分と見えている数字をペアにしたものが一つのローターとなります。
 
-//image[enigma_rotor_window][ローター]{
+//image[enigma_rotor_window][ローター][scale=0.4]{
 //}
 #@# パブリックドメイン https://ja.wikipedia.org/wiki/%E3%83%95%E3%82%A1%E3%82%A4%E3%83%AB:Enigma-rotor-windows.jpg
 
 ローターだけを取り出すと実際にはこのような形をしております。これは3つのローターを連結したときの様子です。
 
-//image[enigma_rotor_set][ローターの外観]{
+//image[enigma_rotor_set][ローターの外観][scale=0.4]{
 //}
 #@# cc0 https://tr.wikipedia.org/wiki/Dosya:Enigma_rotors_with_alphabet_rings.jpg
 
@@ -33,7 +33,7 @@
 
 最終的にはローターは何らかのインプットを受け取って、何らかのアウトプットを返却する関数で表せます。
 
-//image[rotor_function][ローターは関数で表せる]{
+//image[rotor_function][ローターは関数で表せる][scale=0.4]{
 //}
 
 もうすこし仕組みを見ていくと、ローターは次の２ステップの処理をしていることがわかります。
@@ -41,7 +41,7 @@
  1. 入力を受け取り、なんらかの変換をして次の装置へ送る
  2. 送った装置から何らかの値を受け取り、それを変換して一つ前の装置へ返却する
 
-//image[rotor_function_2][左側の入力の流れと、右側の出力の流れ]{
+//image[rotor_function_2][左側の入力の流れと、右側の出力の流れ][scale=0.4]{
 //}
 
 ⑴の処理と⑵の処理は方向が違うだけで、ほぼ同じ処理です。
@@ -57,7 +57,7 @@
 今回使ってるローターは実際に存在しないものなのですが、 A~Z の文字が Z~A の逆のならびに配線されているわかりやすい物を使います。
 下記はそれを図示したものです。
 
-//image[plugboard_rotor_1][Aに設定したローターにプラグボードからAを入力]{
+//image[plugboard_rotor_1][Aに設定したローターにプラグボードからAを入力][scale=0.4]{
 //}
 
 ローターの@<code>{A}が四角で囲まれているのは、@<b>{Aが設定されている}状態を表しています。
@@ -72,7 +72,7 @@
 
 次は、プラグボードからの入力を@<code>{B}に変更して見ましょう。
 
-//image[plugboard_rotor_2][Aに設定したローターにプラグボードからBを入力]{
+//image[plugboard_rotor_2][Aに設定したローターにプラグボードからBを入力][scale=0.4]{
 //}
 
 さて、プラグボードからローターへの@<code>{B}の入力はそのままローターの@<code>{B}に行き、
@@ -85,7 +85,7 @@
 今回はローターの設定を@<code>{A}ではなくて、@<code>{B}に変更した状態にします。
 そして、このローターにプラグボードから@<code>{B}の入力をしてみます。
 
-//image[plugboard_rotor_3_1][Bに設定したローターにプラグボードからBを入力]{
+//image[plugboard_rotor_3_1][Bに設定したローターにプラグボードからBを入力][scale=0.4]{
 //}
 
 結果は、ローター内では@<code>{C}の入力として受け取られて、@<code>{X}が出力されます。
@@ -95,20 +95,20 @@
 このままでは法則がわからないので、このローターに対して様々な入力をしてみましょう。
 
 //table[plguboard_rotor_table_b][Bに設定したローターに様々な入力をしてみる]{
-プラグボードの入力  A B C D E F ...
+プラグボードの入力	A	B	C	D	E	F	~
 -------------------------------------------------------------
-ローターでのinput B C D E F G ...
-ローターでのoutput Y  X W V U T ...
+ローターでのinput	B	C	D	E	F	G	~
+ローターでのoutput	Y	X	W	V	U	T	~
 //}
 
 結果からは@<b>{入力が1つ先のものにずれていること}がわかります。
 では、ローターを@<code>{C}に設定してみましょう。
 
 //table[plguboard_rotor_table_c][Cに設定したローターに様々な入力をしてみる]{
-プラグボードの入力  A B C D E F ...
+プラグボードの入力	A	B	C	D	E	F	~
 -------------------------------------------------------------
-ローターでのinput C D E F G H ...
-ローターでのoutput X W V U T S  ...
+ローターでのinput	C	D	E	F	G	H	~
+ローターでのoutput	X	W	V	U	T	S	~
 //}
 
 今度は@<b>{入力が2つ先のものにずれています}。
@@ -118,16 +118,16 @@
 そうすると、仕組みが見えてきます。
 
 //table[plguboard_rotor_table_b_num][Bに設定したローターに様々な入力をしてみる]{
-プラグボードの入力  0 1 2 3 4 5 ...
+プラグボードの入力	0	1	2	3	4	5	~
 -------------------------------------------------------------
-ローターでのinput B C D E F G ...
-ローターでのoutput Y  X W V U T ...
+ローターでのinput	B	C	D	E	F	G	~
+ローターでのoutput	Y	X	W	V	U	T	~
 //}
 
 まとめると、@<b>{プラグボードの入力した文字はAからの距離の数字として扱われ、ローターに設定された文字にその距離が足された場所の文字がローターの中での入力となります}。
 言葉では難しいですが、図で表現すると次のようになります。
 
-//image[plugboard_rotor_3_2][Bに設定したローターにプラグボードからB(1)を入力]{
+//image[plugboard_rotor_3_2][Bに設定したローターにプラグボードからB(1)を入力][scale=0.4]{
 //}
 
 ちなみに、@<code>{Z}に@<code>{1}を足すと、@<code>{A}になります。
@@ -136,7 +136,7 @@
 
 プラグボードではなくてローターで入力する場合を考えてみます。
 
-//image[rotor_rotor_1][Aに設定したローターにAに設定したローターからAを入力]{
+//image[rotor_rotor_1][Aに設定したローターにAに設定したローターからAを入力][scale=0.4]{
 //}
 
 別段変わったことはありません。
@@ -146,7 +146,7 @@
 
 @<code>{B}に設定したローターに、@<code>{A}に設定したローターから@<code>{B}を入力します。
 
-//image[rotor_rotor_2][Bに設定したローターに、Aに設定したローターからBを入力]{
+//image[rotor_rotor_2][Bに設定したローターに、Aに設定したローターからBを入力][scale=0.4]{
 //}
 
 結果は、プラグボードの時と同様の動きをします。
@@ -161,7 +161,7 @@
 今回、入力される側のローターは@<code>{A}に設定されているため、@<code>{A}から@<code>{2}の距離の@<code>{C}に入力がいくように思えます。
 実際に動かしてみると、次のようになります。
 
-//image[rotor_rotor_3][Aに設定したローターに、Bに設定したローターからCを入力]{
+//image[rotor_rotor_3][Aに設定したローターに、Bに設定したローターからCを入力][scale=0.4]{
 //}
 
 @<b>{プラグボードの入力した文字はAからの距離の数字として扱われ、ローターに設定された文字にその距離が足された場所の文字がローターの中での入力になる}という法則は、
@@ -169,11 +169,11 @@
 どういう仕組みか探るために、今度は送信される@<code>{C}を固定しつつ送信するローター側の設定を変えていき、受け取るローター側でどういうinputになるのかを見て行きます。
 
 //table[plguboard_rotor_table_c_num][Cを送信するローター側の設定をいろいろ変えてみる]{
-送信する側のローターの設定  A B C D E F ...
+送信する側のローターの設定	A	B	C	D	E	F	~
 -------------------------------------------------------------
-送信する側の設定からCへの距離 2 1 0 -1  -2  -3  ...
-受け取るローターでのinput C B A Z X Y ...
-受け取るローターでのoutput W  Y Z A B C ...
+送信する側の設定からCへの距離	2	1	0	-1	-2	-3	~
+受け取るローターでのinput	C	B	A	Z	X	Y	~
+受け取るローターでのoutput	W	Y	Z	A	B	C	~
 //}
 
 これを見ていくと、法則が見えてきます。
@@ -189,7 +189,7 @@
 連結している次の装置から返ってきた文字をどう扱うのかも考えていきましょう。
 ただ、これは今までとまったく同じで、処理の流れが逆なだけです。
 
-//image[rotor_rotor_4][Bに設定された次の装置からBが返却される]{
+//image[rotor_rotor_4][Bに設定された次の装置からBが返却される][scale=0.4]{
 //}
 
 == コードに落としていく
@@ -198,7 +198,7 @@
 そして、次の装置から@<code>{オフセット}を受け取って、また換字表を裏から換字し、前の装置へ@<code>{オフセット}を返却します。
 これがローターの全てです。
 
-//image[rotor_model][ローターの仕組み]{
+//image[rotor_model][ローターの仕組み][scale=0.4]{
 //}
 
 これらを実際にコードに落としていきます。
@@ -343,8 +343,8 @@ class Rotor(
 ローターおよびリフレクターはこれを実装するようにします。
 
 //list[rotor_connect_converter][ローターはConverterと結合できる]{
-class Rotor(...): Converter {
-  ...
+class Rotor(~): Converter {
+  ~
   private var next: Converter? = null
 
   fun connect(next: Converter) {
@@ -359,12 +359,12 @@ class Rotor(...): Converter {
  * 自身が26メモリ進む（1回転する）と、自身に連結してる次のローターを1メモリ進める
 
 //list[rotor_tick][ローターは1メモリ進めるメソッドを持っている]{
-class Rotor(...): Converter {
-  ...
+class Rotor(~): Converter {
+  ~
 
   private var tickCount = 0
   private var next: Converter? = null
-  ...
+  ~
 
   override fun tick() {
     val next = next ?: throw RuntimeException("not found next")
@@ -382,14 +382,14 @@ class Rotor(...): Converter {
 そして@<img>{rotor_model_2} の右部分を@<code>{backToFront}メソッドとして、
 全体を@<code>{convert}メソッドと表現してみます。
 
-//image[rotor_model_2][ローターのモデル]{
+//image[rotor_model_2][ローターのモデル][scale=0.4]{
 //}
 
 コードはこのようになります。
 
 //list[rotor_converter][converterメソッド]{
-class Rotor(...): Converter {
-  ...
+class Rotor(~): Converter {
+  ~
   override fun convert(offset: Int): Int {
     val next = next ?: throw RuntimeException("not found next")
     val offsetForNext = frontToBack(offset)

@@ -1,0 +1,6 @@
+{
+    "vetur.format.options.useTabs": true,
+    "editor.detectIndentation": false,
+    "editor.autoIndent": false,
+    "editor.insertSpaces": false
+}
