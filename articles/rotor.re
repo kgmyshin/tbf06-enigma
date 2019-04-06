@@ -296,7 +296,7 @@ class WiringTable(
     if (
       !charArray.all { Alphabet.ALL.contains(it) } ||
       charArray.size != Alphabet.ALL.size
-    ) throw RuntimeException("invalid writing table")
+    ) throw RuntimeException("invalid wiring table")
   }
 }
 //}

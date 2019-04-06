@@ -26,7 +26,7 @@
 
 プラグボードの配線テーブルは任意のペアを作ることで実現されます。
 リフレクターでは全ての文字がペアになっていましたが、プラグボードの配線はその制限がありません。
-@<code>{WritingTable}というクラス名にします。
+@<code>{WiringTable}というクラス名にします。
 
 //list[wiring_table][WiringTableを定義]{
 class WiringTable(
@@ -40,7 +40,7 @@ class WiringTable(
   init {
     if (
       !map.map { listOf(it.key, it.value) }.flatten().all { LETTERS.contains(it) }
-    ) throw RuntimeException("invalid writing table")
+    ) throw RuntimeException("invalid wiring table")
   }
 }
 //}
