@@ -1,5 +1,9 @@
 # enigma
 
+## PDFはこちら
+
+[こちら](./%E7%B4%8D%E5%93%81%E3%83%87%E3%83%BC%E3%82%BF/tbf06-enigma.pdf)
+
 ## build方法
 
 下記をTerminalで実行すれば `tbf06-enigma.pdf` ができます
